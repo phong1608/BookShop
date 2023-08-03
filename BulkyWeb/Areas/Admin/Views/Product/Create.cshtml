@@ -1,0 +1,93 @@
+﻿@using Bulky.Models
+@model Product  
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Tạo danh mục mới</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title">Tiêu đề</label>
+            <input asp-for="Title" type="text" class="form-control" />
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">Mô tả</label>
+            <input type="text" class="form-control" asp-for="Description" />
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Author">Tác giả</label>
+            <input type="text" class="form-control" asp-for="Author" />
+            <span class="text-danger" asp-validation-for="Author"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ListPrice">Giá Gốc</label>
+            <input type="text" class="form-control" asp-for="ListPrice" />
+            <span class="text-danger" asp-validation-for="ListPrice"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price">Giá</label>
+            <input type="text" class="form-control" asp-for="Price" />
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price50">Giá 50+</label>
+            <input type="text" class="form-control" asp-for="Price50" />
+            <span class="text-danger" asp-validation-for="Price50"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Price100">Giá 100+</label>
+            <input type="text" class="form-control" asp-for="Price100" />
+            <span class="text-danger" asp-validation-for="Price100"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ISBN">Mã vạch</label>
+            <input type="text" class="form-control" asp-for="ISBN" />
+            <span class="text-danger" asp-validation-for="ISBN"></span>
+        </div>
+        <div class="form-floating py-2 col-12">
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select border-0 shadow">
+                <option disabled selected>--Select Category--</option>
+            </select>
+            <label asp-for="CategoryId" class="ms-2"></label>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImageUrl"></label>
+            <input type="file" name="file" class="form-control" asp-for="ImageUrl" />      
+        </div>
+        
+        }
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Tạo</button>
+        @if (ViewBag.Errors != null)
+        {
+            <div class="text-red ml">
+                <ul>
+                    @foreach (string error in ViewBag.Errors)
+                    {
+                        <li class="ml">@error</li>
+                    }
+                </ul>
+            </div>
+        }
+        
+        <div>
+
+
+           
+            
+        </div>
+    </div>
+</form>
+@section scripts
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive" asp-fallback-src="~/jquery.validate.unobtrusive.min.js"></script>
+}

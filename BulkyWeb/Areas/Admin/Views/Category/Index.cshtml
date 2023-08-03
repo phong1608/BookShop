@@ -1,0 +1,47 @@
+﻿@using BulkyWeb.Models;
+@model List<Category> 
+<div class="container">
+    <div class="">
+        <h2>Danh sách danh mục</h2>
+        
+
+    </div>
+    <div>
+        <a asp-action="create" asp-controller="Category" class="btn btn-primary">Tạo danh mục mới</a>
+    </div>
+
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Danh Mục
+            </th>
+            <th>
+                Thứ Tự
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.OrderBy(h=>h.DisplayOrder))
+        {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.DisplayOrder</td>
+            <td>
+                <div class="w-75 btn-group"  >
+                    <a asp-controller="Category" asp-route-id=@item.Id asp-action="Edit" class="btn btn-primary mx-2">
+                        Chỉnh sửa
+                    </a>
+                        <a asp-controller="Category" asp-route-id=@item.Id asp-action="Delete" class="btn btn-danger mx-2">Xóa</a>
+                </div>
+            </td>
+        </tr> 
+        
+        }
+    </tbody>
+   
+            
+    
+    <!-- Add more rows as needed -->
+</table>

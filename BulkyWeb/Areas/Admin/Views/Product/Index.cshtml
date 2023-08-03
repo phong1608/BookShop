@@ -1,0 +1,69 @@
+﻿@using Bulky.Models;
+@model List<Product>
+<div class="container">
+    <div class="">
+        <h2>Danh sách danh mục</h2>
+
+
+    </div>
+    <div>
+        <a asp-action="create" asp-controller="Product" class="btn btn-primary">Thêm sản phẩm mới</a>
+    </div>
+
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Tên sách
+            </th>
+            <th>
+                Tác giả
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Giá sách
+            </th>
+            <th>
+                Giá 50+
+            </th>
+            <th>
+                Giá 100+
+            </th>
+            <th>
+                Mã vạch
+            </th>
+            <th>Thể loại</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Price50</td>
+                <td>@item.Price100</td>
+                <td>@item.ISBN</td>
+                <td>@item.Category?.Name</td>
+                <td>
+                    <div class="w-75 btn-group">
+                        <a asp-controller="Product" asp-route-id=@item.Id asp-action="Edit" class="btn btn-primary mx-2">
+                            Chỉnh sửa
+                        </a>
+                        <a asp-controller="Product" asp-route-id=@item.Id asp-action="Delete" class="btn btn-danger mx-2">Xóa</a>
+                    </div>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+
+
+    <!-- Add more rows as needed -->
+</table>

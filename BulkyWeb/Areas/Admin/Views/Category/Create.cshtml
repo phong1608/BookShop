@@ -1,0 +1,40 @@
+﻿@model Category
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Tạo danh mục mới</h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Tên danh mục</label>
+            <input asp-for="Name" type="text" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for ="DisplayOrder" >Thứ tự hiển thị</label>
+            <input type="text" class="form-control" asp-for="DisplayOrder" />
+            <span class="text-danger" asp-validation-for="DisplayOrder"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Tạo</button>
+    @if (ViewBag.Errors != null)
+    {
+        <div class="text-red ml">
+            <ul>
+                @foreach (string error in ViewBag.Errors)
+                {
+                    <li class="ml">@error</li>
+                }
+            </ul>
+        </div>
+    }
+    </div>
+</form>
+@section scripts
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive" asp-fallback-src="~/jquery.validate.unobtrusive.min.js"></script>
+}
